@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.ebay.epd.sudoku.game.util.SudokuValidationException;
 
-@Component
+
 public class SudokuValidationExceptionMapper implements ExceptionMapper<SudokuValidationException> {
 
 	@Override

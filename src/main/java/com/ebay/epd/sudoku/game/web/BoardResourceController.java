@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
 @RequestMapping("/board")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
-public class BoardResource {
+public class BoardResourceController {
 
 	private final SudokuService service;
 
