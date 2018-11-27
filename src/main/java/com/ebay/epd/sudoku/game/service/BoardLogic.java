@@ -5,7 +5,14 @@ import com.ebay.epd.sudoku.game.util.SudokuValidationException;
 import com.ebay.epd.sudoku.game.domain.Board;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.UUID;
+
 
 @Component
 public class BoardLogic {
@@ -33,7 +40,7 @@ public class BoardLogic {
                 if (b.getFields()[i][j] == null) {
                     return BoardState.VALID;
                 }
-                ;
+
             }
         }
         return BoardState.COMPLETED;

@@ -11,7 +11,8 @@ import java.util.Map;
 @Service
 public class SudokuService {
 
-    BoardLogic boardLogic = new BoardLogic();
+    @Autowired
+    BoardLogic boardLogic;
 
     @Autowired
     BoardLogic validator;
