@@ -1,10 +1,10 @@
 package com.ebay.epd.sudoku;
 
-import com.ebay.epd.sudoku.game.BoardLogic;
+import com.ebay.epd.sudoku.game.service.BoardLogic;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ebay.epd.sudoku.game.Board;
+import com.ebay.epd.sudoku.game.domain.Board;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;

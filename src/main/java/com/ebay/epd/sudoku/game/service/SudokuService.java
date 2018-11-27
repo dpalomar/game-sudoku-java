@@ -1,5 +1,7 @@
-package com.ebay.epd.sudoku.game;
+package com.ebay.epd.sudoku.game.service;
 
+import com.ebay.epd.sudoku.game.util.SudokuValidationException;
+import com.ebay.epd.sudoku.game.domain.Board;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

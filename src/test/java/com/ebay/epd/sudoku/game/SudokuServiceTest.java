@@ -1,5 +1,9 @@
 package com.ebay.epd.sudoku.game;
 
+import com.ebay.epd.sudoku.game.domain.Board;
+import com.ebay.epd.sudoku.game.service.BoardLogic;
+import com.ebay.epd.sudoku.game.service.BoardState;
+import com.ebay.epd.sudoku.game.service.SudokuService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;

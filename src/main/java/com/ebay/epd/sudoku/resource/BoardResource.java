@@ -1,7 +1,7 @@
 package com.ebay.epd.sudoku.resource;
 
-import com.ebay.epd.sudoku.game.Board;
-import com.ebay.epd.sudoku.game.SudokuService;
+import com.ebay.epd.sudoku.game.domain.Board;
+import com.ebay.epd.sudoku.game.service.SudokuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

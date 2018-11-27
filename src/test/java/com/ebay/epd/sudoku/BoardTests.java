@@ -1,7 +1,7 @@
 package com.ebay.epd.sudoku;
 
 
-import com.ebay.epd.sudoku.game.Board;
+import com.ebay.epd.sudoku.game.domain.Board;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;

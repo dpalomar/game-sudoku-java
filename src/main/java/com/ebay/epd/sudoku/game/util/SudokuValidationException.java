@@ -1,4 +1,6 @@
-package com.ebay.epd.sudoku.game;
+package com.ebay.epd.sudoku.game.util;
+
+import com.ebay.epd.sudoku.game.InvalidFieldError;
 
 import java.util.LinkedList;
 import java.util.List;

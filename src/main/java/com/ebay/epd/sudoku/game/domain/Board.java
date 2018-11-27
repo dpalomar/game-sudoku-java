@@ -1,4 +1,6 @@
-package com.ebay.epd.sudoku.game;
+package com.ebay.epd.sudoku.game.domain;
+
+import com.ebay.epd.sudoku.game.service.BoardState;
 
 import javax.validation.constraints.NotNull;
 
