@@ -1,4 +1,4 @@
-package com.ebay.epd.sudoku.game;
+package com.ebay.epd.sudoku.game.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.ebay.epd.sudoku.game.service;
 
-import com.ebay.epd.sudoku.game.InvalidFieldError;
+import com.ebay.epd.sudoku.game.util.InvalidFieldError;
 import com.ebay.epd.sudoku.game.util.SudokuValidationException;
 import com.ebay.epd.sudoku.game.domain.Board;
 import org.springframework.stereotype.Component;
@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.Optional;
 
 
 @Component
@@ -52,10 +53,13 @@ public class BoardLogic {
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
                 Integer digit = b.getFields()[i][j];
-                if (digit != null) {
-                    if (digit < 1 || digit > 9)
-                        errors.add(new InvalidFieldError(i, j));
+                if(Optional.ofNullable(digit).isPresent() && (digit < 1 || digit > 9)){
+                    errors.add(new InvalidFieldError(i, j));
                 }
+//                if (digit != null) {
+//                    if (digit < 1 || digit > 9)
+//                        errors.add(new InvalidFieldError(i, j));
+//                }
             }
         }
     }
@@ -137,10 +141,12 @@ public class BoardLogic {
     }
 
     private Integer[][] generateBoardFields() {
-        Integer[][] fields = new Integer[9][];
-        for (int i = 0; i < fields.length; i++) {
-            fields[i] = new Integer[9];
-        }
+
+        //Use simply initialization
+        Integer[][] fields = new Integer[9][9];
+//        for (int i = 0; i < fields.length; i++) {
+//            fields[i] = new Integer[9];
+//        }
 
         fields[2][0] = 9;
         fields[3][0] = 2;
@@ -184,11 +190,17 @@ public class BoardLogic {
 
 
     public Board generateBoard() {
-        Board b = new Board();
-        b.setId(UUID.randomUUID().toString());
-        Integer[][] fields = generateBoardFields();
-        b.setFields(fields);
-        return b;
+//        Board b = new Board();
+//        b.setId(UUID.randomUUID().toString());
+//        Integer[][] fields = generateBoardFields();
+//        b.setFields(fields);
+//        return b;
+
+        // Using Builder pattern
+        return Board.builder()
+                .id(UUID.randomUUID().toString())
+                .fields(generateBoardFields())
+                .build();
     }
 
 }

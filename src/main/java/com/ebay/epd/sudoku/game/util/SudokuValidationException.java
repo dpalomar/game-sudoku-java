@@ -1,7 +1,5 @@
 package com.ebay.epd.sudoku.game.util;
 
-import com.ebay.epd.sudoku.game.InvalidFieldError;
-
 import java.util.List;
 
 public class SudokuValidationException extends Exception {

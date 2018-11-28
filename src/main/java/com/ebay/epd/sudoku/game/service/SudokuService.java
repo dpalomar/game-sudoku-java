@@ -14,9 +14,7 @@ public class SudokuService {
     @Autowired
     BoardLogic boardLogic;
 
-    @Autowired
-    BoardLogic validator;
-
+//FIXME: static objects are dangerous in a concurrent context and must be removed. If it was necessary then considerate a light memory database or filesystem per user
     static Map<String, Board> boards = new HashMap<>();
 
     public Board getNewBoard() {
@@ -31,7 +29,7 @@ public class SudokuService {
     }
 
     public void validateBoard(Board b) throws SudokuValidationException {
-        BoardState state = validator.isValid(b);
+        BoardState state = boardLogic.isValid(b);
         b.setState(state);
         if (state == BoardState.COMPLETED) {
             b.setDealsLink("https://www.ebay.co.uk/deals");
