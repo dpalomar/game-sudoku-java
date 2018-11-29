@@ -3,7 +3,7 @@ package com.ebay.epd.sudoku.game;
 import com.ebay.epd.sudoku.game.domain.Board;
 import com.ebay.epd.sudoku.game.service.BoardLogic;
 import com.ebay.epd.sudoku.game.service.BoardState;
-import com.ebay.epd.sudoku.game.service.SudokuService;
+import com.ebay.epd.sudoku.game.service.SudokuServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -20,14 +20,14 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {SudokuServiceTest.Config.class, SudokuService.class})
-public class SudokuServiceTest {
+@ContextConfiguration(classes = {SudokuServiceImplTest.Config.class, SudokuServiceImpl.class})
+public class SudokuServiceImplTest {
 
     @Autowired
     private BoardLogic mockValidator;
 
     @Autowired
-    private SudokuService service;
+    private SudokuServiceImpl service;
 
     @Test
     public void shouldNotAddLinkWhenNotCompleted() throws Exception {
