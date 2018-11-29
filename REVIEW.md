@@ -12,7 +12,7 @@
 - Needs clean code: some forgotten _semicolons_, _imports with *_.
 - Abuse of nested loops, maybe refactor with design patterns.
 - No javadoc.
-- Avoid returns _true/false_ sentences. Better using of conditional sentences
+- Avoid returns _true/false_ sentences. Better using of conditional or ternary sentences
     - `BoarLogic#validateCell()` always returns true   
     - `BoarLogic#validateColumn()` always returns true   
 - `BoarLogic#validateDigits()` never throws an `SudokuValidationException`   
@@ -23,6 +23,8 @@
 
 # Highest priority improvement
 
+- A big issue (probably) is about `BoardLogic` class and _"validate"_ methods. Each use nested loops and all of them are processing in sequence over the same thread. So in a concurrent context and with more data it could be possible to suffer a big delay. So a good practice should be parallelize across several threads. I said probably because in local, actual vs refactored code is faster. So it was necessary do it some of stress test to check results.
+- Another issue (maybe personal) is about modify a collection or object by reference into a method. I consider that is better change is value or make a inmutable object and work with copies.  
 - Use native components from spring project, like:
     - Controllers, RestControllers
     - Exception Interceptors
@@ -39,3 +41,9 @@
     - I understand that could be interesting to have an in memory database like, but because that @Components (Controllers, services and repositories) are Singletons it could be dangerous that they contain static references to objects that could be shared among http requests with several clients in a production ready software.
 - Remove loops for 2D array initialization, use easy initialization.    
 - Control null params passed by http with Spring assertions or java Optionals  
+
+# Colophon
+
+I have not refactored the entire project, only the relevant parts. Remove errors and always supported by tests. Tests continue passing in green.
+
+A deepest refactor must include chage Jersey components by `@RestControllers` and `ExceptionInterceptors` and refactoring test also to use `@Before` methods to reuse some initialization code, and document the methods.
