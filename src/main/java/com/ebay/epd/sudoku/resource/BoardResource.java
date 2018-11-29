@@ -2,7 +2,6 @@ package com.ebay.epd.sudoku.resource;
 
 import com.ebay.epd.sudoku.game.domain.Board;
 import com.ebay.epd.sudoku.game.service.SudokuService;
-import com.ebay.epd.sudoku.game.service.SudokuServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -18,7 +17,7 @@ import javax.ws.rs.core.Response;
 public class BoardResource {
 
 	@Autowired
-	SudokuService service;
+	private	SudokuService service;
 
 	@GET
 	public Board getBoard() {

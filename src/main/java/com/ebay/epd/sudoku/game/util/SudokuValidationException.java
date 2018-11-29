@@ -4,7 +4,7 @@ import java.util.List;
 
 public class SudokuValidationException extends Exception {
 
-	List<InvalidFieldError> errors;
+	private List<InvalidFieldError> errors;
 	
 	public SudokuValidationException(List<InvalidFieldError> errors) {
 		super();

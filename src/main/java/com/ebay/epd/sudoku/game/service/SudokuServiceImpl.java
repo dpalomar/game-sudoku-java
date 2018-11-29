@@ -12,7 +12,7 @@ import java.util.Map;
 public class SudokuServiceImpl implements SudokuService {
 
     @Autowired
-    BoardLogic boardLogic;
+    private BoardLogic boardLogic;
 
 //FIXME: static objects are dangerous in a concurrent context and must be removed. If it was necessary then considerate a light memory database or filesystem per user
     static Map<String, Board> boards = new HashMap<>();

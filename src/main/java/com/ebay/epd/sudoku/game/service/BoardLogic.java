@@ -4,15 +4,10 @@ import com.ebay.epd.sudoku.game.util.InvalidFieldError;
 import com.ebay.epd.sudoku.game.util.SudokuValidationException;
 import com.ebay.epd.sudoku.game.domain.Board;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
 
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.Optional;
+import java.util.*;
+import java.util.concurrent.*;
 
 
 @Component
@@ -20,19 +15,51 @@ public class BoardLogic {
 
     public BoardState isValid(Board b) throws SudokuValidationException {
 
+        final StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+
         List<InvalidFieldError> errors = new LinkedList<InvalidFieldError>();
 
-        validateDigits(b, errors);
-        validateRows(b, errors);
-        validateColumns(b, errors);
-        validateCells(b, errors);
 
+        Callable<Void> callable1 = () -> {
+            validateDigits(b, errors);
+            return null;
+        };
+        Callable<Void> callable2 = () -> {
+            validateRows(b, errors);
+            return null;
+        };
+        Callable<Void> callable3 = () -> {
+            validateColumns(b, errors);
+            return null;
+        };
+        Callable<Void> callable4 = () -> {
+            validateCells(b, errors);
+            return null;
+        };
+
+        List<Callable<Void>> taskList = new ArrayList<Callable<Void>>();
+        taskList.add(callable1);
+        taskList.add(callable2);
+        taskList.add(callable3);
+        taskList.add(callable4);
+        ExecutorService executor = Executors.newFixedThreadPool(5);
+
+        try {
+            executor.invokeAll(taskList);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if(stopWatch.isRunning()) {
+            stopWatch.stop();
+            System.out.println(String.format("time %d ms",  stopWatch.getTotalTimeMillis()));
+        }
         if (errors.size() > 0) {
             throw new SudokuValidationException(errors);
         }
 
-        BoardState state = getBoardState(b);
-        return state;
+        return getBoardState(b);
     }
 
     private BoardState getBoardState(Board b) {

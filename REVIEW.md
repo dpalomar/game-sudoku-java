@@ -13,6 +13,9 @@
 - Abuse of nested loops, maybe refactor with design patterns.
 - No javadoc.
 - Avoid returns _true/false_ sentences. Better using of conditional sentences
+    - `BoarLogic#validateCell()` always returns true   
+    - `BoarLogic#validateColumn()` always returns true   
+- `BoarLogic#validateDigits()` never throws an `SudokuValidationException`   
 - Control some nulls from params with `Optional` to avoid `NullPointerExceptions`
 - Improvement: Use a ATDD syntax like _given...when...then_ in the tests to self documentation.
 - Refactor nested conditions because Java use "_short circuit_" to evaluate logical operators.

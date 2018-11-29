@@ -30,7 +30,7 @@ public class BoardTests {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    MultiValueMap<String, String> headers = new HttpHeaders() {{
+    private final MultiValueMap<String, String> headers = new HttpHeaders() {{
         add("Content-Type", "application/json");
         add("Accept", "application/json");
     }};
